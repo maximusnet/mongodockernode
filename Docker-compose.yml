@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  webdb:
+    image: mongo
+    container_name: db
+    volumes:
+      - ./init-mongo.js:/docker-entrypoint-init.d/init-mongo.js:ro
+    environment:
+      - MONGGO_INITDB_DATABASE=work
+      - MONGGO_INITDB_ROOT_USERNAME=test
+      - MONGGO_INITDB_ROOT_PASSWORD=test
+    ports: 
+        - '27017-27019:2717-27019'
+
+volumes:
+     mongo_data:
